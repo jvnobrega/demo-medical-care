@@ -1,4 +1,4 @@
-package com.acme.demomedicalcare;
+package com.acme.demo.medical.care;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "b210dcf8-984f-430a-abd3-de9f94eda0d2",
+		"name": "demo-medical-care",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25484351"
+	},
+	"item": [
+		{
+			"name": "doctor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Murray S. Hoffman\",\n    \"email\": \"murrays@hoffman.com\",\n    \"telephone\": \"910888888\",\n    \"crm\": \"666666\",\n    \"specialty\": \"CARDIOLOGY\",\n    \"address\": {\n        \"streetName\": \"1520 Tator Patch Road\",\n        \"neighborhood\": \"Appomattox\",\n        \"zipCode\": \"60606\",\n        \"city\": \"Chicago\",\n        \"state\": \"IL\",\n        \"complement\": \"\",\n        \"addressNumber\": \"12558\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/doctor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"doctor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doctor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/doctor/402d08aa-6bf6-4adf-9a25-366d7c157043",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"doctor",
+						"402d08aa-6bf6-4adf-9a25-366d7c157043"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"victor@test.com\",\n    \"password\": \"senha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
